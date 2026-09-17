@@ -2,6 +2,8 @@
 
 **Portals** is a web prototype for jumping between live windows around Earth. The core interaction is a spatial transition where the next live destination is already moving inside the opening before it expands to fill the screen.
 
+Current prototype: **v0.2**
+
 ## Prototype features
 
 - Curated live camera destinations around the world
