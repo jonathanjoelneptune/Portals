@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>PORTALS — Live Earth</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app" class="app" data-transition="rift">
+    <section class="stage" aria-label="Live portal view">
+      <div id="layerA" class="world-layer active"><div id="playerA" class="player"></div></div>
+      <div id="layerB" class="world-layer incoming"><div id="playerB" class="player"></div></div>
+      <div id="portalEdge" class="portal-edge" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+
+      <div id="loadingScreen" class="loading-screen">
+        <div class="loading-orb"></div>
+        <div class="loading-copy">
+          <span>OPENING PORTAL</span>
+          <strong id="loadingPlace">Shibuya Crossing</strong>
+        </div>
+      </div>
+
+      <header class="brand chrome">
+        <div class="brand-mark"><span class="brand-dot"></span> PORTALS</div>
+        <button id="settingsButton" class="icon-button" title="Portal settings" aria-label="Portal settings">✦</button>
+      </header>
+
+      <aside id="hud" class="hud chrome">
+        <div class="eyebrow"><span class="live-dot"></span> LIVE WINDOW</div>
+        <h1 id="placeName">Opening portal…</h1>
+        <div class="meta"><span id="placeDetail"></span><span class="sep">•</span><span id="localTime"></span></div>
+        <div class="hud-bottom">
+          <div id="qualityPill" class="quality-pill">LIVE</div>
+          <a id="sourceLink" class="source-link" href="#" target="_blank" rel="noopener noreferrer">Open source ↗</a>
+        </div>
+      </aside>
+
+      <div class="center-flash" id="centerFlash" aria-hidden="true">JUMPING</div>
+
+      <nav class="controls chrome" aria-label="Portal controls">
+        <button id="prevButton" class="control-button" title="Previous portal (←)">←</button>
+        <button id="randomButton" class="control-button primary" title="Random portal (Space)">◎</button>
+        <button id="nextButton" class="control-button" title="Next portal (→)">→</button>
+        <span class="divider"></span>
+        <button id="wanderButton" class="text-button" title="Automatically jump">Wander</button>
+        <button id="destinationsButton" class="text-button" title="Choose destination">Destinations</button>
+        <button id="fullscreenButton" class="control-button small" title="Fullscreen">⛶</button>
+      </nav>
+
+      <div id="statusToast" class="status-toast" role="status"></div>
+    </section>
+
+    <section id="drawer" class="drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div>
+          <div class="eyebrow">LIVE EARTH</div>
+          <h2>Choose a portal</h2>
+        </div>
+        <button id="closeDrawer" class="icon-button" aria-label="Close destinations">×</button>
+      </div>
+      <div id="destinationGrid" class="destination-grid"></div>
+      <p class="drawer-note">These are live third-party feeds shown in their original players. A feed can go offline or change without notice, so Portals automatically skips sources that the player reports as unavailable.</p>
+    </section>
+
+    <section id="settings" class="settings" aria-hidden="true">
+      <div class="settings-head">
+        <div>
+          <div class="eyebrow">EXPERIMENT LAB</div>
+          <h2>Portal transition</h2>
+        </div>
+        <button id="closeSettings" class="icon-button" aria-label="Close settings">×</button>
+      </div>
+
+      <div class="transition-list" id="transitionList">
+        <button class="transition-card selected" data-transition="rift"><b>Rift</b><span>Signature expanding dimensional opening</span></button>
+        <button class="transition-card" data-transition="door"><b>Doorway</b><span>Step through a spatial threshold</span></button>
+        <button class="transition-card" data-transition="tear"><b>Reality Tear</b><span>Irregular split in the current world</span></button>
+        <button class="transition-card" data-transition="iris"><b>Iris</b><span>Minimal cinematic aperture</span></button>
+      </div>
+
+      <label class="range-row"><span>Transition speed</span><input id="speedRange" type="range" min="650" max="2200" value="1250" step="50" /><output id="speedOutput">1.25s</output></label>
+      <label class="range-row"><span>Edge intensity</span><input id="edgeRange" type="range" min="0" max="100" value="70" step="5" /><output id="edgeOutput">70%</output></label>
+      <label class="range-row"><span>Wander interval</span><input id="wanderRange" type="range" min="15" max="180" value="45" step="5" /><output id="wanderOutput">45s</output></label>
+      <p class="settings-note">The incoming live feed is loaded before the portal opens. This is the core illusion we are testing: the next place should already be moving on the other side.</p>
+    </section>
+
+    <div id="scrim" class="scrim"></div>
+
+    <div id="fileWarning" class="fatal-panel" hidden>
+      <div>
+        <div class="eyebrow">PORTALS NEEDS HTTPS</div>
+        <h2>Open the live site instead of the downloaded HTML file.</h2>
+        <p>YouTube blocks many embedded players opened directly from <code>file://</code> because there is no HTTP referrer. The GitHub Pages version provides the web origin the player expects.</p>
+        <a href="https://jonathanjoelneptune.github.io/Portals/">Open Portals live ↗</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="app.js"></script>
+</body>
+</html>
